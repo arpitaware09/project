@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? 'https://your-render-url.onrender.com'  // Replace with your actual Render URL
+    ? '*'  // Allow all origins in production for now
     : '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -50,13 +50,23 @@ if (!require('fs').existsSync(uploadsDir)) {
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  const buildPath = path.join(__dirname, '../client/build');
+  console.log('Serving static files from:', buildPath);
+  
+  // Check if build directory exists
+  if (require('fs').existsSync(buildPath)) {
+    console.log('Build directory exists');
+    // Set static folder
+    app.use(express.static(buildPath));
 
-  // Handle React routing, return all requests to React app
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-  });
+    // Handle React routing, return all requests to React app
+    app.get('*', (req, res) => {
+      console.log('Serving index.html for route:', req.path);
+      res.sendFile(path.resolve(buildPath, 'index.html'));
+    });
+  } else {
+    console.error('Build directory does not exist at:', buildPath);
+  }
 }
 
 // Error handling middleware
@@ -72,4 +82,5 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log('NODE_ENV:', process.env.NODE_ENV);
 }); 
