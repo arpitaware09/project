@@ -1,0 +1,25 @@
+{
+  "name": "digital-keys-marketplace",
+  "version": "1.0.0",
+  "description": "A full-stack e-commerce application for selling digital product keys and software licenses",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "ecommerce",
+    "mern",
+    "digital-keys",
+    "razorpay"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+} 
