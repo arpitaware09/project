@@ -11,6 +11,7 @@ import keyAnimation from '../assets/animations/key-animation.json';
 import gameAnimation from '../assets/animations/game-animation.json';
 import softwareAnimation from '../assets/animations/software-animation.json';
 import osAnimation from '../assets/animations/os-animation.json';
+import heroAnimation from '../assets/animations/hero-animation.json';
 
 const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -41,10 +42,13 @@ const HomePage = () => {
         <div className="container">
           <HeroContent>
             <HeroText>
-              <h1>Authentic ESP keys at the best price</h1>
-              <p>
-                Get instant access to your favorite software, games, and digital products with our secure and reliable key marketplace.
-              </p>
+              <h1>BEST GAMING HACKS</h1>
+              <BulletPoints>
+                <li>Free and Fast Updates</li>
+                <li>Ensure the Fluidity</li>
+                <li>Precision Needed to Master the Game</li>
+                <li>Exceptional Performance with Improved FPS</li>
+              </BulletPoints>
               <HeroButtons>
                 <PrimaryButton to="/products">
                   Browse Products <FaArrowRight />
@@ -55,10 +59,9 @@ const HomePage = () => {
               </HeroButtons>
             </HeroText>
             <HeroImageContainer>
-              <HeroImage 
-                src="/images/hero-image.jpg" 
-                alt="Quick Axis Digital Keys" 
-              />
+              <CategoryAnimationContainer className="hero" style={{ width: '100%', height: '400px', backgroundColor: 'transparent', padding: '0' }}>
+                <Lottie animationData={heroAnimation} loop={true} style={{ width: '100%', height: '100%' }} />
+              </CategoryAnimationContainer>
             </HeroImageContainer>
           </HeroContent>
         </div>
@@ -172,8 +175,10 @@ const HomePage = () => {
 
 const HeroSection = styled.section`
   padding: 4rem 0;
-  background: linear-gradient(135deg, #000000 0%, #141414 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(20, 20, 20, 0.5) 100%);
   color: white;
+  position: relative;
+  z-index: 1;
 `;
 
 const HeroContent = styled.div`
@@ -193,17 +198,34 @@ const HeroText = styled.div`
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
-  }
-  
-  p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
   
   @media (max-width: 768px) {
     h1 {
       font-size: 2rem;
+    }
+  }
+`;
+
+const BulletPoints = styled.ul`
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  
+  li {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+    position: relative;
+    
+    &::before {
+      content: '•';
+      color: var(--primary-color);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
     }
   }
 `;
@@ -260,8 +282,8 @@ const SecondaryButton = styled(Link)`
 const HeroImageContainer = styled.div`
   max-width: 100%;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
+  background-color: transparent;
   overflow: hidden;
 `;
 
@@ -318,7 +340,9 @@ const ViewAllLink = styled(Link)`
 
 const FeaturedSection = styled.section`
   padding: 4rem 0;
-  background-color: var(--background-color);
+  background-color: rgba(20, 20, 20, 0.5);
+  position: relative;
+  z-index: 1;
 `;
 
 const ProductGrid = styled.div`
@@ -351,7 +375,9 @@ const ErrorMessage = styled.div`
 
 const CategoriesSection = styled.section`
   padding: 4rem 0;
-  background-color: var(--light-color);
+  background-color: rgba(30, 30, 30, 0.5);
+  position: relative;
+  z-index: 1;
 `;
 
 const CategoryGrid = styled.div`
@@ -369,7 +395,7 @@ const CategoryGrid = styled.div`
 `;
 
 const CategoryCard = styled(Link)`
-  background-color: var(--card-background);
+  background-color: rgba(24, 24, 24, 0.8);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -392,7 +418,7 @@ const CategoryCard = styled(Link)`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    background-color: var(--hover-background);
+    background-color: rgba(35, 35, 35, 0.9);
   }
 `;
 
@@ -405,28 +431,30 @@ const CategoryAnimationContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
   padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
   
   &.esp-keys {
-    background-color: rgba(229, 9, 20, 0.1);
+    background-color: rgba(229, 9, 20, 0.05);
   }
   
   &.games {
-    background-color: rgba(155, 89, 182, 0.1);
+    background-color: rgba(155, 89, 182, 0.05);
   }
   
   &.software {
-    background-color: rgba(52, 152, 219, 0.1);
+    background-color: rgba(52, 152, 219, 0.05);
   }
   
   &.os {
-    background-color: rgba(243, 156, 18, 0.1);
+    background-color: rgba(243, 156, 18, 0.05);
   }
 `;
 
 const PlatformsSection = styled.section`
   padding: 4rem 0;
-  background-color: var(--hover-background);
+  background-color: rgba(35, 35, 35, 0.5);
+  position: relative;
+  z-index: 1;
 `;
 
 const PlatformGrid = styled.div`
@@ -444,7 +472,7 @@ const PlatformGrid = styled.div`
 `;
 
 const PlatformCard = styled(Link)`
-  background-color: var(--card-background);
+  background-color: rgba(24, 24, 24, 0.8);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -476,8 +504,10 @@ const PlatformCard = styled(Link)`
 
 const CTASection = styled.section`
   padding: 4rem 0;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.5) 0%, rgba(52, 73, 94, 0.5) 100%);
   color: white;
+  position: relative;
+  z-index: 1;
 `;
 
 const CTAContent = styled.div`
