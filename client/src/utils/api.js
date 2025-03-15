@@ -1,10 +1,15 @@
 import axios from 'axios';
 
+// For debugging
+console.log('Current environment:', process.env.NODE_ENV);
+const apiUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://project-ivkp.onrender.com' 
+  : 'http://localhost:5000';
+console.log('Using API URL:', apiUrl);
+
 // Create an instance of axios with the base URL
 const api = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' 
-    ? 'https://project-ivkp.onrender.com' // Your actual Render backend URL
-    : 'http://localhost:5000',
+  baseURL: apiUrl,
   headers: {
     'Content-Type': 'application/json'
   },
