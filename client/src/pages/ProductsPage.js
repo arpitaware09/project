@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { FaFilter, FaSearch, FaTimes } from 'react-icons/fa';
 import ProductCard from '../components/products/ProductCard';
+import api from '../utils/api'; // Import the API utility
 
 const ProductsPage = () => {
   const location = useLocation();
@@ -52,7 +52,7 @@ const ProductsPage = () => {
         params.append('page', currentPage);
         params.append('limit', 12);
         
-        const res = await axios.get(`/api/products?${params.toString()}`);
+        const res = await api.get(`/api/products?${params.toString()}`);
         
         if (res.data.success) {
           setProducts(res.data.products);

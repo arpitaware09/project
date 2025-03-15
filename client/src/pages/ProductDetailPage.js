@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { 
   FaStar, 
   FaShoppingCart, 
@@ -16,6 +15,7 @@ import {
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useCurrency } from '../context/CurrencyContext';
+import api from '../utils/api'; // Import the API utility
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -44,7 +44,7 @@ const ProductDetailPage = () => {
       setError(null);
       
       try {
-        const res = await axios.get(`/api/products/${id}`);
+        const res = await api.get(`/api/products/${id}`);
         
         if (res.data.success) {
           setProduct(res.data.product);
@@ -73,7 +73,7 @@ const ProductDetailPage = () => {
         try {
           // Check if user has purchased this product
           console.log('Making request to check purchase status...');
-          const res = await axios.get(`/api/users/has-purchased/${product._id}`);
+          const res = await api.get(`/api/users/has-purchased/${product._id}`);
           console.log('Purchase status response:', res.data);
           
           if (res.data.success) {
@@ -152,12 +152,12 @@ const ProductDetailPage = () => {
     
     try {
       console.log('Sending review to:', `/api/products/${id}/reviews`);
-      const res = await axios.post(`/api/products/${id}/reviews`, reviewForm);
+      const res = await api.post(`/api/products/${id}/reviews`, reviewForm);
       console.log('Review submission response:', res.data);
       
       if (res.data.success) {
         // Refresh product to show new review
-        const productRes = await axios.get(`/api/products/${id}`);
+        const productRes = await api.get(`/api/products/${id}`);
         if (productRes.data.success) {
           setProduct(productRes.data.product);
         }
