@@ -42,7 +42,7 @@ const HomePage = () => {
         <div className="container">
           <HeroContent>
             <HeroText>
-              <h1>Authentic Digital Keys at the Best Prices</h1>
+              <h1>Authentic ESP keys at the best price</h1>
               <p>
                 Get instant access to your favorite software, games, and digital products with our secure and reliable key marketplace.
               </p>

@@ -3,12 +3,8 @@ node_modules/
 /.pnp
 .pnp.js
 
-# Testing
-/coverage
-
 # Production
 /client/build
-/client/dist
 
 # Environment variables
 .env
@@ -25,13 +21,12 @@ yarn-error.log*
 # Editor directories and files
 .idea/
 .vscode/
-*.swp
-*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
 .DS_Store
-
-# Server specific
-/server/uploads/*
-!/server/uploads/.gitkeep
-
-# Debug files
-debug.html 
+Thumbs.db 

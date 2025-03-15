@@ -1,23 +1,19 @@
 services:
   - type: web
-    name: digital-keys-marketplace
+    name: digital-keys-marketplace-api
     env: node
-    buildCommand: npm install && cd client && npm install && npm run build
+    buildCommand: cd server && npm install
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 10000
       - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
         sync: false
-      - key: CLOUDINARY_CLOUD_NAME
+      - key: RAZORPAY_KEY_ID
         sync: false
-      - key: CLOUDINARY_API_KEY
-        sync: false
-      - key: CLOUDINARY_API_SECRET
-        sync: false
-      - key: STRIPE_SECRET_KEY
-        sync: false
-      - key: STRIPE_WEBHOOK_SECRET
+      - key: RAZORPAY_KEY_SECRET
         sync: false 
