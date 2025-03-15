@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { FaArrowRight, FaWindows, FaApple, FaLinux, FaAndroid } from 'react-icons/fa';
 import ProductCard from '../components/products/ProductCard';
 import Lottie from 'lottie-react';
@@ -18,20 +17,6 @@ const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [apiStatus, setApiStatus] = useState(null);
-
-  // Test API connection
-  const testApiConnection = async () => {
-    try {
-      setApiStatus('Testing...');
-      const response = await api.get('/');
-      console.log('API test response:', response.data);
-      setApiStatus('Connected: ' + JSON.stringify(response.data));
-    } catch (err) {
-      console.error('API test error:', err);
-      setApiStatus('Error: ' + (err.message || 'Unknown error'));
-    }
-  };
 
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
@@ -68,11 +53,7 @@ const HomePage = () => {
                 <SecondaryButton to="/products?category=games">
                   Explore Games
                 </SecondaryButton>
-                <TestButton onClick={testApiConnection}>
-                  Test API Connection
-                </TestButton>
               </HeroButtons>
-              {apiStatus && <ApiStatus>{apiStatus}</ApiStatus>}
             </HeroText>
             <HeroAnimationContainer>
               <Lottie animationData={heroAnimation} loop={true} />
@@ -272,32 +253,6 @@ const SecondaryButton = styled(Link)`
     background-color: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
   }
-`;
-
-const TestButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-  }
-`;
-
-const ApiStatus = styled.div`
-  text-align: center;
-  padding: 1rem;
-  font-size: 1.1rem;
-  color: white;
-  margin-top: 1rem;
 `;
 
 const HeroAnimationContainer = styled.div`
