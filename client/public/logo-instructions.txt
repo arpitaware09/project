@@ -1,0 +1,11 @@
+To fix the missing logo errors, you need to add the following files to this directory:
+
+1. logo192.png - A 192x192 pixel PNG image for your app icon
+2. logo512.png - A 512x512 pixel PNG image for your app icon
+3. favicon.ico - A favicon file for browser tabs
+
+You can create these files using any image editing software or online tools like:
+- https://favicon.io/
+- https://www.canva.com/
+
+After adding these files, rebuild and redeploy your application. 

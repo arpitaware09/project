@@ -55,7 +55,10 @@ const HomePage = () => {
               </HeroButtons>
             </HeroText>
             <HeroImageContainer>
-              <HeroImage src="/images/hero-image.jpg" alt="Quick Axis Digital Keys" />
+              <HeroImage 
+                src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop" 
+                alt="Digital Keys and Security" 
+              />
             </HeroImageContainer>
           </HeroContent>
         </div>
