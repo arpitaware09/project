@@ -36,7 +36,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
-        const res = await axios.get('/api/products?featured=true&limit=4');
+        const res = await api.get('/api/products?featured=true&limit=4');
         if (res.data.success) {
           setFeaturedProducts(res.data.products);
         }
