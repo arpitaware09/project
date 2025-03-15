@@ -3,7 +3,7 @@ import axios from 'axios';
 // Create an instance of axios with the base URL
 const api = axios.create({
   baseURL: process.env.NODE_ENV === 'production' 
-    ? 'https://digital-keys-marketplace-api.onrender.com' // Replace with your actual Render URL
+    ? 'https://project-ivkp.onrender.com' // Your actual Render backend URL
     : 'http://localhost:5000',
   headers: {
     'Content-Type': 'application/json'
