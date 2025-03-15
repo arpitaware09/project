@@ -7,7 +7,6 @@ import Lottie from 'lottie-react';
 import api from '../utils/api'; // Import the API utility
 
 // Import Lottie animations
-import heroAnimation from '../assets/animations/hero-animation.json';
 import keyAnimation from '../assets/animations/key-animation.json';
 import gameAnimation from '../assets/animations/game-animation.json';
 import softwareAnimation from '../assets/animations/software-animation.json';
@@ -55,9 +54,9 @@ const HomePage = () => {
                 </SecondaryButton>
               </HeroButtons>
             </HeroText>
-            <HeroAnimationContainer>
-              <Lottie animationData={heroAnimation} loop={true} />
-            </HeroAnimationContainer>
+            <HeroImageContainer>
+              <HeroImage src="/images/hero-image.jpg" alt="Quick Axis Digital Keys" />
+            </HeroImageContainer>
           </HeroContent>
         </div>
       </HeroSection>
@@ -255,12 +254,19 @@ const SecondaryButton = styled(Link)`
   }
 `;
 
-const HeroAnimationContainer = styled.div`
+const HeroImageContainer = styled.div`
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.05);
   overflow: hidden;
+`;
+
+const HeroImage = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 `;
 
 const SectionHeader = styled.div`
