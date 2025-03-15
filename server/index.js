@@ -48,12 +48,29 @@ if (!require('fs').existsSync(uploadsDir)) {
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  // Check if client/build directory exists before trying to serve it
+  const clientBuildPath = path.join(__dirname, '../client/build');
+  const fs = require('fs');
+  
+  if (fs.existsSync(clientBuildPath)) {
+    // Set static folder
+    app.use(express.static(clientBuildPath));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-  });
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(clientBuildPath, 'index.html'));
+    });
+  } else {
+    console.log('Client build directory not found. Running in API-only mode.');
+    
+    // Add a route for the root path to confirm API is working
+    app.get('/', (req, res) => {
+      res.json({ 
+        message: 'API server is running', 
+        version: '1.0.0',
+        endpoints: ['/api/auth', '/api/products', '/api/payments', '/api/admin', '/api/uploads']
+      });
+    });
+  }
 }
 
 // Error handling middleware
