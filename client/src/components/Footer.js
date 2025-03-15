@@ -123,7 +123,7 @@ const Footer = () => {
       </FooterContent>
 
       <Copyright>
-        &copy; {currentYear} Qucik Axis. All rights reserved.
+        &copy; {currentYear} Quick Axis. All rights reserved.
       </Copyright>
     </FooterContainer>
   );

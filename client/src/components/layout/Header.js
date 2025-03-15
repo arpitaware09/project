@@ -26,7 +26,7 @@ const Header = () => {
       <div className="container">
         <HeaderContent>
           <Logo>
-            <Link to="/">Qucik Axis</Link>
+            <Link to="/">Quick Axis</Link>
           </Logo>
 
           <MobileMenuButton onClick={toggleMenu}>

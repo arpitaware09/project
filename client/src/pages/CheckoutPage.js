@@ -183,7 +183,7 @@ const CheckoutPage = () => {
         key: razorpayKey,
         amount: orderRes.data.order.amount,
         currency: orderRes.data.order.currency,
-        name: 'Qucik Axis',
+        name: 'Quick Axis',
         description: 'Purchase of digital products',
         order_id: orderRes.data.order.id,
         handler: async (response) => {

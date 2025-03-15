@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container">
         <FooterContent>
           <FooterSection>
-            <h3>Qucik Axis</h3>
+            <h3>Quick Axis</h3>
             <p>Your trusted source for digital product keys and software licenses.</p>
             <SocialIcons>
               <SocialIcon href="https://facebook.com" target="_blank" rel="noopener noreferrer">
@@ -52,7 +52,7 @@ const Footer = () => {
           <FooterSection>
             <h3>Contact Us</h3>
             <ContactInfo>
-              <p>Email: support@qucikaxis.com</p>
+              <p>Email: support@quickaxis.com</p>
               <p>Phone: +1 (555) 123-4567</p>
               <p>Hours: Mon-Fri, 9am-5pm EST</p>
             </ContactInfo>
@@ -60,7 +60,7 @@ const Footer = () => {
         </FooterContent>
 
         <FooterBottom>
-          <p>&copy; {currentYear} Qucik Axis. All rights reserved.</p>
+          <p>&copy; {currentYear} Quick Axis. All rights reserved.</p>
           <FooterBottomLinks>
             <FooterLink to="/privacy">Privacy Policy</FooterLink>
             <FooterLink to="/terms">Terms of Service</FooterLink>
